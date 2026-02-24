@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HRMS Lite</title>
+
+<style>
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f6f9;
+}
+
+/* NAVBAR */
+nav {
+    background: linear-gradient(90deg, #1f4037, #2c5364);
+    padding: 14px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* NAVBAR LINKS */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 25px;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+}
+
+nav a:hover {
+    color: #ffd700;
+}
+
+/* CONTENT BELOW NAVBAR */
+.content {
+    margin-top: 80px;
+    padding: 20px 40px;
+}
+
+/* HEADINGS */
+h2 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+/* TABLE STYLING (global) */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #2c5364;
+    color: white;
+}
+
+/* BUTTONS */
+button {
+    background-color: #27ae60;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1e8449;
+}
+
+/* LINKS AS BUTTONS (like Delete) */
+a.button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+a.button:hover {
+    background-color: #c0392b;
+}
+</style>
+
+</head>
+<body>
+
+<nav>
+    <a href="/"> Home</a>
+    <a href="/employees/"> Employees</a>
+    <a href="/add/"> Add Employee</a>
+    <a href="/attendance/"> Attendance</a>
+    <a href="/mark/"> Mark Attendance</a>
+    <a href="/">Logout</a>
+</nav>
+
+<div class="content">
+
+    {% for message in messages %}
+        <p style="color:green; text-align:center;">{{ message }}</p>
+    {% endfor %}
+
+    {% block content %}{% endblock %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 style="text-align:center;">Mark Attendance</h2>
+
+<form method="post" style="width:400px;margin:auto;background:white;padding:20px;border-radius:10px;">
+    {% csrf_token %}
+
+    <p>
+        {{ form.employee.label_tag }}<br>
+        {{ form.employee }}
+    </p>
+
+    <p>
+        {{ form.date.label_tag }}<br>
+        {{ form.date }}
+        <small style="color:gray;">Use calendar </small>
+    </p>
+
+    <p>
+        {{ form.status.label_tag }}<br>
+        {{ form.status }}
+    </p>
+
+    <button type="submit">Save Attendance</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: hrms-backend
+    env: python
+    region: oregon
+    plan: free
+    rootDir: backend
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn mysite.wsgi:application"
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: "hrms-backend.onrender.com"
+      - key: PYTHON_VERSION
+        value: "3.10.0"

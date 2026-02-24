@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        background-color: white;
+    }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 6px;
+        text-align: center;
+    }
+    th {
+        background: #2c5364;
+        color: white;
+    }
+    .present {
+        color: green;
+        font-weight: bold;
+    }
+    .absent {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+
+<h2 style="text-align:center;">Attendance Records</h2>
+
+<div style="overflow-x:auto;">
+<table>
+    <tr>
+        <th>Employee</th>
+        {% for d in dates %}
+            <th>{{ d|date:"d-m-Y" }}</th>
+        {% endfor %}
+    </tr>
+
+    {% for emp in employees %}
+    <tr>
+        <td>{{ emp.full_name }}</td>
+        {% for d in dates %}
+            <td>
+                {% for rec in records %}
+                    {% if rec.employee.id == emp.id and rec.date == d %}
+                        {% if rec.status == "Present" %}
+                            <span class="present">P</span>
+                        {% else %}
+                            <span class="absent">A</span>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
+{% endblock %}
